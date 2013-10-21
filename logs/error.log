@@ -1,0 +1,2 @@
+2013/10/21 22:42:15 [error] 1779#0: *2 open() "/home/ma/sCamera/sCamera/www_root/favicon.ico" failed (2: No such file or directory), client: 192.168.0.7, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.0.150"
+2013/10/21 22:43:09 [error] 1779#0: *2 open() "/home/ma/sCamera/sCamera/www_root/message" failed (2: No such file or directory), client: 192.168.0.7, server: localhost, request: "POST /message?r=52161037&u=33980799 HTTP/1.1", host: "192.168.0.150", referrer: "http://192.168.0.150/"
