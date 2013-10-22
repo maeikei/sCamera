@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WebRTC Reference App</title>
+<title>Smart Camera</title>
 
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 
-<link rel="canonical" href="https://apprtc.appspot.com/?r=52161037"/>
 <link rel="stylesheet" href="css/main.css" />
 
 <!--script type="text/javascript" src="/_ah/channel/jsapi"></script-->
@@ -16,16 +15,11 @@
 </head>
 <body>
 <script type="text/javascript">
-  var channelToken = 'AHRlWrr2VXcpmIhIWZaKeBHtyXXd9qLm4P8dhMiVEq6PT7_krpvW0h7yvEfeo2U7cUPxOuTyBFlg0weJtf9rl2z5hDi3hP86TaQ2943oW8hYHIWkEDK1uOI';
-  var me = '33980799';
-  var roomKey = '52161037';
-  var roomLink = 'https://apprtc.appspot.com/?r=52161037';
   var initiator = 0;
   var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
   var pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
   var offerConstraints = {"optional": [], "mandatory": {}};
   var mediaConstraints = {"audio": true, "video": {"mandatory": {}, "optional": []}};
-  var turnUrl = 'https://computeengineondemand.appspot.com/turn?username=33980799&key=4080218913';
   var stereo = false;
   var audio_send_codec = '';
   var audio_receive_codec = 'opus/48000';

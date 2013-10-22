@@ -22,7 +22,6 @@ var isAudioMuted = false;
 var gatheredIceCandidateTypes = { Local: {}, Remote: {} };
 
 function initialize() {
-  console.log('Initializing; room=' + roomKey + '.');
   card = document.getElementById('card');
   localVideo = document.getElementById('localVideo');
   // Reset localVideo display to center.
@@ -30,7 +29,6 @@ function initialize() {
     window.onresize();});
   miniVideo = document.getElementById('miniVideo');
   remoteVideo = document.getElementById('remoteVideo');
-  resetStatus();
   // NOTE: AppRTCClient.java searches & parses this line; update there when
   // changing here.
   openChannel();
@@ -42,16 +40,6 @@ function initialize() {
 
 function openChannel() {
   console.log('Opening channel.');
-/*  
-  var channel = new goog.appengine.Channel(channelToken);
-  var handler = {
-    'onopen': onChannelOpened,
-    'onmessage': onChannelMessage,
-    'onerror': onChannelError,
-    'onclose': onChannelClosed
-  };
-  socket = channel.open(handler);
-*/
 }
 
 function maybeRequestTurn() {
@@ -76,12 +64,6 @@ function maybeRequestTurn() {
     turnDone = true;
     return;
   }
-
-  // No TURN server. Get one from computeengineondemand.appspot.com.
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = onTurnResult;
-  xmlhttp.open('GET', turnUrl, true);
-  xmlhttp.send();
 }
 
 function onTurnResult() {
@@ -107,14 +89,6 @@ function onTurnResult() {
   maybeStart();
 }
 
-function resetStatus() {
-  if (!initiator) {
-    setStatus('Waiting for someone to join: \
-              <a href=' + roomLink + '>' + roomLink + '</a>');
-  } else {
-    setStatus('Initializing...');
-  }
-}
 
 function doGetUserMedia() {
   // Call into getUserMedia via the polyfill (adapter.js).
@@ -204,7 +178,6 @@ function setLocalAndSendMessage(sessionDescription) {
   sessionDescription.sdp = maybePreferAudioReceiveCodec(sessionDescription.sdp);
   pc.setLocalDescription(sessionDescription,
        onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
-  sendMessage(sessionDescription);
 }
 
 function setRemote(message) {
@@ -216,16 +189,6 @@ function setRemote(message) {
        onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 }
 
-function sendMessage(message) {
-  var msgString = JSON.stringify(message);
-  console.log('C->S: ' + msgString);
-  // NOTE: AppRTCClient.java searches & parses this line; update there when
-  // changing here.
-  path = '/message?r=' + roomKey + '&u=' + me;
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', path, true);
-  xhr.send(msgString);
-}
 
 function processSignalingMessage(message) {
   if (!started) {
@@ -322,10 +285,6 @@ function iceCandidateType(candidateSDP) {
 
 function onIceCandidate(event) {
   if (event.candidate) {
-    sendMessage({type: 'candidate',
-                 label: event.candidate.sdpMLineIndex,
-                 id: event.candidate.sdpMid,
-                 candidate: event.candidate.candidate});
     noteIceCandidate("Local", iceCandidateType(event.candidate.candidate));
   } else {
     console.log('End of candidates.');
@@ -407,15 +366,12 @@ function transitionToWaiting() {
                remoteVideo.src = '' }, 500);
   miniVideo.style.opacity = 0;
   remoteVideo.style.opacity = 0;
-  resetStatus();
 }
 
 function transitionToDone() {
   localVideo.style.opacity = 0;
   remoteVideo.style.opacity = 0;
   miniVideo.style.opacity = 0;
-  setStatus('You have left the call. <a href=' + roomLink + '>\
-            Click here</a> to rejoin.');
 }
 
 function enterFullScreen() {
@@ -670,7 +626,6 @@ function removeCN(sdpLines, mLineIndex) {
 // Send BYE on refreshing(or leaving) a demo page
 // to ensure the room is cleaned for next session.
 window.onbeforeunload = function() {
-  sendMessage({type: 'bye'});
 }
 
 // Set the video diplaying in the center of window.
