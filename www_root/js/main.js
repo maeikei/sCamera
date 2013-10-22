@@ -42,6 +42,7 @@ function initialize() {
 
 function openChannel() {
   console.log('Opening channel.');
+/*  
   var channel = new goog.appengine.Channel(channelToken);
   var handler = {
     'onopen': onChannelOpened,
@@ -50,6 +51,7 @@ function openChannel() {
     'onclose': onChannelClosed
   };
   socket = channel.open(handler);
+*/
 }
 
 function maybeRequestTurn() {
