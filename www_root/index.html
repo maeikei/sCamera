@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Smart Camera</title>
+<title>WebRTC Reference App</title>
 
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 
+<link rel="canonical" href="https://apprtc.appspot.com/?r=67963966"/>
 <link rel="stylesheet" href="css/main.css" />
 
 <!--script type="text/javascript" src="/_ah/channel/jsapi"></script-->
-<script src="js/main.js"></script>
+<script src="/js/channel.js"></script>
+<script src="/js/main.js"></script>
 <!-- Load the polyfill to switch-hit between Chrome and Firefox -->
-<script src="js/adapter.js"></script>
+<script src="/js/adapter.js"></script>
 
 </head>
 <body>
 <script type="text/javascript">
+  var errorMessages = [];
+  var channelToken = 'AHRlWrpeMrv7rfBd9nVcJoS6qoKs90eONlOFWheRt2L1frMzTRCstabfhA2GASRbldI_HSFXkYYeodFm_lsIICNy38LAVsElKYARUpGLthLqBPqttUpA6Bg';
+  var me = '13131655';
+  var roomKey = '67963966';
+  var roomLink = 'https://apprtc.appspot.com/?r=67963966';
   var initiator = 0;
   var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
   var pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
   var offerConstraints = {"optional": [], "mandatory": {}};
-  var mediaConstraints = {"audio": true, "video": {"mandatory": {}, "optional": []}};
+  var mediaConstraints = {"audio": true, "video": true};
+  var turnUrl = 'https://computeengineondemand.appspot.com/turn?username=13131655&key=4080218913';
   var stereo = false;
   var audio_send_codec = '';
   var audio_receive_codec = 'opus/48000';
@@ -40,4 +48,7 @@
   </div>
 </div>
 </body>
+<footer id="status">
+</footer>
+<div id="infoDiv"></div>
 </html>
