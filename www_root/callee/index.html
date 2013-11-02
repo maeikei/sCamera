@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>You2You Remote Camera Callee</title>
+  <link rel="stylesheet" href="../css/chat.style.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/adapter.js"></script>
+  <script>
+    var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
+    var pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
+    //console.log(pcConfig);
+    //console.log(pcConstraints);
+    var pc = new RTCPeerConnection(pcConfig, pcConstraints);
+    console.log(pc);
+    pc.onicecandidate = function (evt) {
+      if(evt.candidate) {
+        console.log(evt.candidate);
+      }
+    }
+    
+    pc.onnegotiationneeded = function () {
+      pc.createOffer(localDescCreated, logError);
+    }
+    getUserMedia({ "audio": true, "video": true }, onLocalStreamReady,onLocalStreamException)
+
+    function onLocalStreamReady(stream) {
+      console.log(stream);
+    }
+    function onLocalStreamException(e) {
+    	console.log(e);
+    }
+
+  </script>
+</head>
+
+<body>
+
+</body>
+</html>
