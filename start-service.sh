@@ -1,4 +1,6 @@
 #/bin/bash
-nginx -p /home/ma/sCamera/sCamera -t -c www_conf/nginx.conf
-nginx -p /home/ma/sCamera/sCamera -c www_conf/nginx.conf
+mkdir -p ./logs/
+touch ./logs/error.log
+/opt/nginx/sbin/nginx -p ./ -t -c www_conf/nginx.conf
+/opt/nginx/sbin/nginx -p ./ -c www_conf/nginx.conf
 
