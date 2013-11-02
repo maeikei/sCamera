@@ -20,15 +20,25 @@
     pc.onnegotiationneeded = function () {
       pc.createOffer(localDescCreated, logError);
     }
-    getUserMedia({ "audio": true, "video": true }, onLocalStreamReady,onLocalStreamException)
-
+    var mediaProp = { "audio": true, "video": true };
+    getUserMedia(mediaProp,onLocalStreamReady,onLocalStreamException)
+    pc.createOffer(onOfferCreated, onError);
+    
+    function onOfferCreated(description) {
+      offer = description;
+      pc.setLocalDescription(offer, onPcLocalDescriptionSet, onError);
+    }
     function onLocalStreamReady(stream) {
       console.log(stream);
     }
     function onLocalStreamException(e) {
     	console.log(e);
     }
-
+    function onError(err) {
+       console.alert(err.message);
+    }
+    function onPcLocalDescriptionSet() {
+    }
   </script>
 </head>
 
