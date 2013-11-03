@@ -7,7 +7,6 @@
     console.log(pc);
     pc.onicecandidate = onCandidate;
     var mediaProp = { "audio": true, "video": true };
-    pc.createAnswer(pc.remoteDescription, onAnswerCreated);
     getUserMedia(mediaProp,onLocalStreamReady,onLocalStreamException)
     
 	function onCandidate(canEvt) {
@@ -21,7 +20,7 @@
     }
     function onLocalStreamReady(stream) {
 	  pc.addStream(stream);
-      console.log(stream);
+      pc.createAnswer(pc.remoteDescription, onAnswerCreated);
     }
     function onLocalStreamException(e) {
     	console.log(e);
