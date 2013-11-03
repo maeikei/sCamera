@@ -7,7 +7,7 @@
     console.log(pc);
     pc.onicecandidate = onCandidate;
     var mediaProp = { "audio": true, "video": true };
-    pc.createOffer(pc.remoteDescription, onAnswerCreated);
+    pc.createAnswer(pc.remoteDescription, onAnswerCreated);
     getUserMedia(mediaProp,onLocalStreamReady,onLocalStreamException)
     
 	function onCandidate(canEvt) {
