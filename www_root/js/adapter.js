@@ -4,6 +4,7 @@ var attachMediaStream = null;
 var reattachMediaStream = null;
 var webrtcDetectedBrowser = null;
 var webrtcDetectedVersion = null;
+var pcServersConfig = null;
 
 function trace(text) {
   // This function is used for logging.
@@ -17,6 +18,8 @@ if (navigator.mozGetUserMedia) {
   console.log("This appears to be Firefox");
 
   webrtcDetectedBrowser = "firefox";
+  pcServersConfig = {"iceServers": [{"url": "stun:stun.services.mozilla.com"}]};
+  pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
 
   webrtcDetectedVersion =
            parseInt(navigator.userAgent.match(/Firefox\/([0-9]+)\./)[1], 10);
@@ -86,7 +89,8 @@ if (navigator.mozGetUserMedia) {
   };
 } else if (navigator.webkitGetUserMedia) {
   console.log("This appears to be Chrome");
-
+  pcServersConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
+  pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
   webrtcDetectedBrowser = "chrome";
   webrtcDetectedVersion =
          parseInt(navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./)[2], 10);

@@ -1,29 +1,26 @@
 <html>
 <head>
   <title>You2You Remote Camera Callee</title>
-  <link rel="stylesheet" href="../css/chat.style.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   <script type="text/javascript" src="../js/adapter.js"></script>
-  <script>
-    var pcConfig = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
-    var pcConstraints = {"optional": [{"DtlsSrtpKeyAgreement": true}]};
-    //console.log(pcConfig);
-    //console.log(pcConstraints);
-    var pc = new RTCPeerConnection(pcConfig, pcConstraints);
+  <script>    
+    var pc = new RTCPeerConnection(pcServersConfig, pcConstraints);
     console.log(pc);
     pc.onicecandidate = onCandidate;
     var mediaProp = { "audio": true, "video": true };
-    pc.createOffer(onOfferCreated, onError);
+    pc.createOffer(pc.remoteDescription, onAnswerCreated);
     getUserMedia(mediaProp,onLocalStreamReady,onLocalStreamException)
     
-	function onCandidate(candidate) {
-	  console.log(candidate);
+	function onCandidate(canEvt) {
+	  if(canEvt.candidate) {
+	    console.log(canEvt.candidate);
+	  }
 	}
-    function onOfferCreated(description) {
+    function onAnswerCreated(description) {
       offer = description;
       pc.setLocalDescription(offer, onPcLocalDescriptionSet, onError);
     }
     function onLocalStreamReady(stream) {
+	  pc.addStream(stream);
       console.log(stream);
     }
     function onLocalStreamException(e) {
@@ -38,6 +35,6 @@
 </head>
 
 <body>
-
 </body>
 </html>
+
