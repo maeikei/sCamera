@@ -1,4 +1,4 @@
-var messageServer = new WebSocket('wss://', ['soap', 'xmpp']);
+var messageServer = new WebSocket('wss://www.watorvapor.com/sCamera/messageServer.php', ['soap', 'xmpp']);
 // When the connection is open, send some data to the server
 messageServer.onopen = function () {
   messageServer.send('Ping'); // Send the message 'Ping' to the server
