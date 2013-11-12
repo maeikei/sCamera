@@ -5,8 +5,7 @@ messageServer.onopen = function () {
 };
 // Log errors
 messageServer.onerror = function (error) {
-  console.log('WebSocket Error ' + error);
-  console.log(error);
+  console.error(error);
 };
 // Log messages from the server
 messageServer.onmessage = function (e) {
