@@ -13,12 +13,8 @@ var webSocketServer = new WSServer({httpServer: plainHttpServer});
 var accept = ['localhost', '127.0.0.1'];
 
 webSocketServer.on('request', function (req) {
+	console.log(req.origin);
 	req.origin = req.origin || '*';
-	if (accept.indexOf(url.parse(req.origin).hostname) === -1) {
-		req.reject();
-		console.log(req.origin + ' access not allowed.');
-		return;
-	}
 
 	var websocket = req.accept(null, req.origin);
 

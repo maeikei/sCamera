@@ -21,7 +21,7 @@
     }
     function onLocalStreamReady(stream) {
 	  pc.addStream(stream);
-      pc.createAnswer(pc.remoteDescription, onAnswerCreated);
+      //pc.createAnswer(pc.remoteDescription, onAnswerCreated);
     }
     function onLocalStreamException(e) {
     	console.log(e);
