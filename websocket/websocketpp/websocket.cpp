@@ -5,7 +5,6 @@
 #include <iostream>
 
 typedef websocketpp::server<websocketpp::config::asio_tls> server;
-
 using websocketpp::lib::placeholders::_1;
 using websocketpp::lib::placeholders::_2;
 using websocketpp::lib::bind;
@@ -28,7 +27,7 @@ void on_message(server* s, websocketpp::connection_hdl hdl, message_ptr msg) {
 }
 
 std::string get_password() {
-    return "test";
+    return "mayingkui";
 }
 
 context_ptr on_tls_init(websocketpp::connection_hdl hdl) {
@@ -40,33 +39,33 @@ context_ptr on_tls_init(websocketpp::connection_hdl hdl) {
                          boost::asio::ssl::context::no_sslv2 |
                          boost::asio::ssl::context::single_dh_use);
         ctx->set_password_callback(bind(&get_password));
-        ctx->use_certificate_chain_file("server.pem");
-        ctx->use_private_key_file("server.pem", boost::asio::ssl::context::pem);
+//        ctx->use_certificate_chain_file("mCameraWssPrivate.pem");
+        ctx->use_private_key_file("mCameraWssPrivate.pem", boost::asio::ssl::context::pem);
     } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
+        std::cout << __func__ << " " << e.what() << std::endl;
     }
     return ctx;
 }
 
 int main() {
     // Create a server endpoint
-	server echo_server;
+	server mCameraWSS;
 
     // Initialize ASIO
-	echo_server.init_asio();
+	mCameraWSS.init_asio();
 
     // Register our message handler
-    echo_server.set_message_handler(bind(&on_message,&echo_server,::_1,::_2));
-    echo_server.set_tls_init_handler(bind(&on_tls_init,::_1));
+    mCameraWSS.set_message_handler(bind(&on_message,&mCameraWSS,::_1,::_2));
+    mCameraWSS.set_tls_init_handler(bind(&on_tls_init,::_1));
 
 
 	// Listen on port 9002
-	echo_server.listen(9002);
+	mCameraWSS.listen(9002);
 
 	// Start the server accept loop
-	echo_server.start_accept();
+	mCameraWSS.start_accept();
 
 	// Start the ASIO io_service run loop
-	echo_server.run();
+	mCameraWSS.run();
 
 }
