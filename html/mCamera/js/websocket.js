@@ -1,4 +1,4 @@
-var messageServer = new WebSocket('wss://' + location.hostname + '/mCameraWss');
+var messageServer = new WebSocket('wss://' + location.hostname + ':8453');
 // When the connection is open, send some data to the server
 messageServer.onopen = function () {
   messageServer.send('Ping'); // Send the message 'Ping' to the server
@@ -11,3 +11,4 @@ messageServer.onerror = function (error) {
 messageServer.onmessage = function (e) {
   console.log('Server: ' + e.data);
 };
+//console.log(messageServer);
