@@ -59,8 +59,8 @@ int main() {
     mCameraWSS.set_tls_init_handler(bind(&on_tls_init,::_1));
 
 
-	// Listen on port 9002
-	mCameraWSS.listen(9002);
+	// Listen on port 8453
+	mCameraWSS.listen(8453);
 
 	// Start the server accept loop
 	mCameraWSS.start_accept();
