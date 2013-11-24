@@ -2,8 +2,12 @@
 <head>
   <title>I 2 Me Remote Camera Callee</title>
   <script type="text/javascript" src="../js/adapter.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/ext/rsa.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/ext/rsa2.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/rsasign-1.2.js"></script>
+  <script type="text/javascript" src="../js/rsa.js"></script>
   <script type="text/javascript" src="../js/websocket.js"></script>
-  <script>    
+  <script>
     var pc = new RTCPeerConnection(pcServersConfig, pcConstraints);
     console.log(pc);
     pc.onicecandidate = onCandidate;
