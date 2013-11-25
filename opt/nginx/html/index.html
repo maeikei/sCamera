@@ -1,0 +1,14 @@
+<html>
+<head>
+<script>
+  var languageinfo=navigator.language? navigator.language : navigator.userLanguage;
+  console.log(languageinfo);
+  if (window.location.replace)
+    window.location.replace(languageinfo)
+  else
+    window.location=languageinfo
+</script>
+</head>
+<body>
+</body>
+</html>
