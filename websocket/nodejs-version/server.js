@@ -43,9 +43,9 @@
     // passing or reference to web server so WS would knew port and SSL capabilities
     var wss = new WebSocketServer( { server: app } );
 
-
     wss.on( 'connection', function ( wsConnect ) {
 
+		console.log( wsConnect );
         wsConnect.on( 'message', function ( message ) {
 
             console.log( message );

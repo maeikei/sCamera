@@ -1,4 +1,4 @@
-var messageServer = new WebSocket('wss://' + location.hostname + ':8453');
+var messageServer = new WebSocket('wss://' + location.hostname + '/mCameraWss');
 // When the connection is open, send some data to the server
 messageServer.onopen = function () {
 };
