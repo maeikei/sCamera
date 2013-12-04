@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-  var languageinfo=navigator.language? navigator.language : navigator.userLanguage;
+  var languageinfo=(navigator.language? navigator.language : navigator.userLanguage).substr(0,2);
   console.log(languageinfo);
   if (window.location.replace)
     window.location.replace(languageinfo)
