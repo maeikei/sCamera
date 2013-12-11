@@ -47,12 +47,12 @@
 
 		console.log( wsConnect );
         wsConnect.on( 'message', function ( message ) {
-
-            console.log( message );
-
+			var jsonMsg = JSON.parse( message );
+			console.log( jsonMsg["key"] );
         });
-
     });
 
+    wss.on( 'close', function ( wsConnect ) {
+	});
 
 }());
