@@ -1,8 +1,15 @@
 var privateKey = 'mCamera.PrivateKey.pem';
 var publicKey = 'mCamera.PublicKey.pem';
-var videoName = 'mCamera.id.video';
+var streamName = 'mCamera.id.stream';
 var securityName = 'mCamera.id.security';
 var infoName = 'mCamera.id.info';
+
+var privatePEM = localStorage.getItem(privateKey);
+
+var publicPEM = localStorage.getItem(publicKey);
+var streamID = localStorage.getItem(streamName);
+var securityID = localStorage.getItem(securityName);
+var infoID = localStorage.getItem(infoName);
 
 
 function createRSAKey() {
@@ -15,14 +22,12 @@ function createRSAKey() {
   localStorage.setItem(publicKey,pubkey_pem);
 }
 
-var privatePEM = localStorage.getItem(privateKey);
 if(null == privatePEM) {
 	createRSAKey();
 	privatePEM = localStorage.getItem(privateKey);
 }
 console.log(privatePEM);
 
-var publicPEM = localStorage.getItem(publicKey);
 if(null == publicPEM) {
 	createRSAKey();
 	publicPEM = localStorage.getItem(publicKey);
@@ -41,20 +46,17 @@ function uuid() {
          s4() + '-' + s4() + s4() + s4();
 }
 
-var videoID = localStorage.getItem(videoName);
-if(null == videoID) {
-	videoID = hex_sha1(uuid());
-	localStorage.setItem(videoName,videoID);
+if(null == streamID) {
+	streamID = hex_sha1(uuid());
+	localStorage.setItem(streamName,streamID);
 }
 
 
-var securityID = localStorage.getItem(securityName);
 if(null == securityID) {
 	securityID = hex_sha1(uuid());
 	localStorage.setItem(securityName,securityID);
 }
 
-var infoID = localStorage.getItem(infoName);
 if(null == infoID) {
 	infoID = hex_sha1(uuid());
 	localStorage.setItem(infoName,infoID);

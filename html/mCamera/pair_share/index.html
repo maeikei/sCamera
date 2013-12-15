@@ -8,17 +8,28 @@
   <script type="text/javascript" src="../js/jsrsasign/jsrsasign-latest-all-min.js"></script>
   <script type="text/javascript" src="../js/jsrsasign/ext/sha1.js"></script>
   <script type="text/javascript" src="../js/local.security.js"></script>
+  <script type="text/javascript" src="../js/pairing.ws.js"></script>
   <script>
-    window.onload = function() {            
+    pairWSS.onopen = function() {            
 		function startShare() {
 			var password = rand();
-			console.log(password);
 			var passElem = document.getElementById('SharePassword');
-			console.log(passElem);
 			passElem.innerHTML = password;
+			var objPairShare = { share:true,password:password,
+				pair: 
+				{
+					shareKey:publicPEM,
+					stream:streamID,
+					security:securityID,
+					info:infoID,
+				}
+			};
+			var strPair = JSON.stringify( objPairShare);
+			console.log(strPair);
+			pairWSS.send(strPair);
 		}
 		startShare();
-        setInterval(startShare, 30 * 1000);
+        setInterval(startShare, 31 * 1000);
     }
     function rand() {
 	    var nMax = 100000; 
