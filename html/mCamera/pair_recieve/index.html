@@ -1,0 +1,43 @@
+
+<html>
+<head>
+  <title>Pairing</title>
+  <link rel="stylesheet" href="../css/pairing.style.css">
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/peer.min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/jsrsasign-latest-all-min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/ext/sha1.js"></script>
+  <script type="text/javascript" src="../js/local.security.js"></script>
+  <script>
+    function rand() {
+		var randnum = 1000000 + Math.floor( Math.random() * 1000000 );
+		return randnum;
+	}
+	function startShare() {
+		var password = rand();
+		console.log(password);
+		var passElem = document.getElementById('SharePassword');
+		console.log(passElem);
+		passElem.innerHTML = password;
+	}
+  </script>
+</head>
+
+<body>
+<div id="SharePairingInfo">
+<div class="Animation">
+<div class="AnimationTop"></div>
+<div class="AnimationBottom"></div>
+</div>
+<div class="Content">
+	<input type="button" class="PairingButton" value="Start share my pairing information" onclick="startShare()">
+	<div id="SharePassword"></div>
+</div>
+</div>
+<div id="RecievePairingInfo">
+<div class="Content">
+	<input type="text" value="">
+</div>
+</div>
+</body>
+</html>
