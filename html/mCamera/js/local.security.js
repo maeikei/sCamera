@@ -1,6 +1,5 @@
 var privateKey = 'mCamera.PrivateKey.pem';
 var publicKey = 'mCamera.PublicKey.pem';
-var pairingKey = 'mCamera.PairingKey.pem';
 var videoName = 'mCamera.id.video';
 var securityName = 'mCamera.id.security';
 var infoName = 'mCamera.id.info';
