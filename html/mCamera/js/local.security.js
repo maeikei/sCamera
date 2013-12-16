@@ -1,15 +1,20 @@
+
 var privateKey = 'mCamera.local.privateKey.pem';
 var publicKey = 'mCamera.local.publicKey.pem';
 var streamName = 'mCamera.local.stream';
 var securityName = 'mCamera.local.security';
 var infoName = 'mCamera.local.info';
 
-var privatePEM = localStorage.getItem(privateKey);
 
-var publicPEM = localStorage.getItem(publicKey);
-var streamID = localStorage.getItem(streamName);
-var securityID = localStorage.getItem(securityName);
-var infoID = localStorage.getItem(infoName);
+var localPrivateKey = localStorage.getItem(privateKey);
+var localPublicKey = localStorage.getItem(publicKey);
+var localStream = localStorage.getItem(streamName);
+var localSecurity = localStorage.getItem(securityName);
+var localInformation = localStorage.getItem(infoName);
+
+
+
+
 
 
 function createRSAKey() {
@@ -22,17 +27,15 @@ function createRSAKey() {
   localStorage.setItem(publicKey,pubkey_pem);
 }
 
-if(null == privatePEM) {
+if(null == localPrivateKey) {
 	createRSAKey();
-	privatePEM = localStorage.getItem(privateKey);
+	localPrivateKey = localStorage.getItem(privateKey);
 }
-console.log(privatePEM);
 
-if(null == publicPEM) {
+if(null == localPublicKey) {
 	createRSAKey();
-	publicPEM = localStorage.getItem(publicKey);
+	localPublicKey = localStorage.getItem(publicKey);
 }
-console.log(publicPEM);
 
 
 function s4() {
@@ -46,18 +49,18 @@ function uuid() {
          s4() + '-' + s4() + s4() + s4();
 }
 
-if(null == streamID) {
-	streamID = hex_sha1(uuid());
-	localStorage.setItem(streamName,streamID);
+if(null == localStream) {
+	localStream = hex_sha1(uuid());
+	localStorage.setItem(streamName,localStream);
 }
 
 
-if(null == securityID) {
-	securityID = hex_sha1(uuid());
-	localStorage.setItem(securityName,securityID);
+if(null == localSecurity) {
+	localSecurity = hex_sha1(uuid());
+	localStorage.setItem(securityName,localSecurity);
 }
 
-if(null == infoID) {
-	infoID = hex_sha1(uuid());
-	localStorage.setItem(infoName,infoID);
+if(null == localInformation) {
+	localInformation = hex_sha1(uuid());
+	localStorage.setItem(infoName,localInformation);
 }

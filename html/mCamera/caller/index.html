@@ -5,29 +5,26 @@
   <link rel="stylesheet" href="../css/chat.style.css">
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/peer.min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/jsrsasign-latest-all-min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/ext/sha1.js"></script>
+  <script type="text/javascript" src="../js/local.security.js"></script>
   <script>
 
     // Compatibility shim
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     // PeerJS object
-    var peer = new Peer({ 
+    var streamPeer = new Peer(localStream,{ 
 		host: 'www.watorvapor.com', port: 9000,
 		key: 'a61a5d6ddb7789', debug: 3, config: {'iceServers': [
       { url: 'stun:stun.l.google.com:19302' } // Pass in optional STUN and TURN server for maximum network compatibility
     ]}});
 
-    peer.on('open', function(){
-      $('#my-id').text(peer.id);
+    streamPeer.on('open', function(){
+      console.log(streamPeer.id);
     });
 
-    // Receiving a call
-    peer.on('call', function(call){
-      // Answer the call automatically (instead of prompting user) for demo purposes
-      call.answer(window.localStream);
-      step3(call);
-    });
-    peer.on('error', function(err){
+    streamPeer.on('error', function(err){
       alert(err.message);
       // Return to step 2 if error occurs
       step2();

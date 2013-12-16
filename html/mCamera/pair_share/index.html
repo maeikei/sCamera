@@ -18,10 +18,10 @@
 			var objPairShare = { share:true,password:password,
 				pair: 
 				{
-					shareKey:publicPEM,
-					stream:streamID,
-					security:securityID,
-					info:infoID,
+					shareKey:localPublicKey,
+					stream:localStream,
+					security:localSecurity,
+					info:localInformation,
 				}
 			};
 			var strPair = JSON.stringify( objPairShare);
