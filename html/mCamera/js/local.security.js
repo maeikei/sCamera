@@ -1,8 +1,8 @@
-var privateKey = 'mCamera.PrivateKey.pem';
-var publicKey = 'mCamera.PublicKey.pem';
-var streamName = 'mCamera.id.stream';
-var securityName = 'mCamera.id.security';
-var infoName = 'mCamera.id.info';
+var privateKey = 'mCamera.local.privateKey.pem';
+var publicKey = 'mCamera.local.publicKey.pem';
+var streamName = 'mCamera.local.stream';
+var securityName = 'mCamera.local.security';
+var infoName = 'mCamera.local.info';
 
 var privatePEM = localStorage.getItem(privateKey);
 
