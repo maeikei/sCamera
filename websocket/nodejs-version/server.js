@@ -59,32 +59,32 @@
 			var jsonMsg = JSON.parse( message );
 //			console.log(jsonMsg);
 			
-			if( true == jsonMsg["share"]) {
+			if( true == jsonMsg["master"]) {
 				var password = jsonMsg["password"];
 //				console.log(password);
 				pairingInfo[password] = jsonMsg["pair"];
 				pairingSocket[password] = wsConnect;
 				setTimeout(TimeoutHandler, 29 * 1000,password);
 			}
-			if( true == jsonMsg["recieve"]) {
+			if( true == jsonMsg["slave"]) {
 				var password = jsonMsg["password"];
 				// send back to me your message.
-				var shareMsg = JSON.stringify(pairingInfo[password]);
-				if(shareMsg) {
-					console.log('-----shareMsg start-----');
-					console.log(shareMsg);
-					console.log('-----shareMsg end-----');
-					wsConnect.send(shareMsg);
+				var masterMsg = JSON.stringify(pairingInfo[password]);
+				if(masterMsg) {
+					console.log('-----masterMsg start-----');
+					console.log(masterMsg);
+					console.log('-----masterMsg end-----');
+					wsConnect.send(masterMsg);
 				}
 				// send mine message to you.
-				var yourSocket = pairingSocket[password];
-				if(yourSocket) {
-					//console.log(yourSocket);
-					var rcvMsg = JSON.stringify(jsonMsg["pair"]);
-					console.log('-----rcvMsg start-----');
-					console.log(rcvMsg);
-					yourSocket.send(rcvMsg);
-					console.log('-----rcvMsg end-----');
+				var masterSocket = pairingSocket[password];
+				if(masterSocket) {
+					//console.log(masterSocket);
+					var slaveMsg = JSON.stringify(jsonMsg["pair"]);
+					console.log('-----slaveMsg start-----');
+					console.log(slaveMsg);
+					masterSocket.send(slaveMsg);
+					console.log('-----slaveMsg end-----');
 				}
 			}
         });
