@@ -14,3 +14,6 @@ touch /home/picuntu/workspace/sCamera/logs/error.log
 
 /opt/nginx/sbin/nginx -p /home/picuntu/workspace/sCamera -c conf/nginx.conf
 
+
+/opt/nginx/sbin/nginx -p /home/picuntu/workspace/sCamera -c conf/nginx.wvCamera.conf
+

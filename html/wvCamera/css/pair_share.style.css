@@ -1,0 +1,105 @@
+body {
+	text-align: center;
+}
+
+div#SharePairingInfo{
+  background-color: green;
+  margin: 0 auto;
+}
+
+.AnimationTop{
+  float: left;
+  margin-top:10px;
+  width:0px;
+  height:20px;
+  background:gray;
+  border-style: solid;
+  animation:topAnimation 30s linear 3s infinite alternate;
+  /* Safari and Chrome: */
+  -webkit-animation:topAnimation 30s linear 3s infinite alternate;
+}
+.AnimationBottom{
+  float: left;
+  margin-top:10px;
+  width:100px;
+  height:20px;
+  background:white;
+  border-style: solid;
+  animation:bottomAnimation 30s linear 3s infinite alternate;
+  /* Safari and Chrome: */
+  -webkit-animation:bottomAnimation 30s linear 3s infinite alternate;
+}
+
+#SharePassword {
+  float: left;
+  background-color: red;
+  padding: 3px;
+  margin-left: 50px;
+  width:100px;
+  height:40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+}
+
+
+@keyframes topAnimation
+{
+0%  {width:0px;}
+10%  {width:10px;}
+20%  {width:20px;}
+30%  {width:30px;}
+40%  {width:40px;}
+50%  {width:50px;}
+60%  {width:60px;}
+70%  {width:70px;}
+80%  {width:80px;}
+90%  {width:90px;}
+100%{width:100px;}
+}
+
+@-webkit-keyframes topAnimation /* Safari and Chrome */
+{
+0%  {width:0px;}
+10%  {width:10px;}
+20%  {width:20px;}
+30%  {width:30px;}
+40%  {width:40px;}
+50%  {width:50px;}
+60%  {width:60px;}
+70%  {width:70px;}
+80%  {width:80px;}
+90%  {width:90px;}
+100%{width:100px;}
+}
+
+
+@keyframes bottomAnimation
+{
+0%  {width:100px;}
+10%  {width:90px;}
+20%  {width:80px;}
+30%  {width:70px;}
+40%  {width:60px;}
+50%  {width:50px;}
+60%  {width:40px;}
+70%  {width:30px;}
+80%  {width:20px;}
+90%  {width:10px;}
+100%{width:0px;}
+}
+
+@-webkit-keyframes bottomAnimation /* Safari and Chrome */
+{
+0%  {width:100px;}
+10%  {width:90px;}
+20%  {width:80px;}
+30%  {width:70px;}
+40%  {width:60px;}
+50%  {width:50px;}
+60%  {width:40px;}
+70%  {width:30px;}
+80%  {width:20px;}
+90%  {width:10px;}
+100%{width:0px;}
+}

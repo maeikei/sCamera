@@ -13,4 +13,5 @@ mkdir -p /home/picuntu/workspace/sCamera/logs
 touch /home/picuntu/workspace/sCamera/logs/error.log
 
 /opt/nginx/sbin/nginx -p /home/picuntu/workspace/sCamera -t -c conf/nginx.conf
+/opt/nginx/sbin/nginx -p /home/picuntu/workspace/sCamera -t -c conf/nginx.wvCamera.conf
 

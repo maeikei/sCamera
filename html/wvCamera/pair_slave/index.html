@@ -1,0 +1,38 @@
+
+<html>
+<head>
+  <title>Pairing</title>
+  <link rel="stylesheet" href="../css/pair_recieve.style.css">
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/peer.min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/jsrsasign-latest-all-min.js"></script>
+  <script type="text/javascript" src="../js/jsrsasign/ext/sha1.js"></script>
+  <script type="text/javascript" src="../js/local.security.js"></script>
+  <script type="text/javascript" src="../js/pairing.ws.js"></script>
+  <script>
+	function onChange() {
+		var passElem = document.getElementById('PairPassword');
+		console.log(passElem.value);
+		var password = passElem.value;
+		var objPairShare = {slave:true,password:password,
+			pair: 
+			{
+				shareKey:localPublicKey,
+				stream:localStream,
+				security:localSecurity,
+				info:localInformation,
+			}
+		};
+		var strPair = JSON.stringify( objPairShare);
+		console.log(strPair);
+		pairWSS.send(strPair);
+	}
+  </script>
+</head>
+
+<body>
+<div id="PairInfo">
+<input type="text" name="name" size="30" maxlength="20" id="PairPassword" onchange="onChange()">
+</div>
+</body>
+</html>
