@@ -18,7 +18,7 @@
 	
     // PeerJS object
     var peerStream = new Peer(localStream,{ 
-		host: 'www.watorvapor.com', port: 9000,
+		host: location.hostname, port: 9000,
 		key: 'a61a5d6ddb7789', debug: 3, config: {'iceServers': [
       { url: 'stun:stun.l.google.com:19302' } // Pass in optional STUN and TURN server for maximum network compatibility
     ]}});

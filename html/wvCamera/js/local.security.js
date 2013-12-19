@@ -13,6 +13,10 @@ var localSecurity = localStorage.getItem(securityName);
 var localInformation = localStorage.getItem(infoName);
 
 
+var remotePublicKey =  localStorage.getItem('mCamera.remote.publicKey.pem');
+var remoteStream =   localStorage.getItem('mCamera.remote.stream');
+var remoteSecurity =   localStorage.getItem('mCamera.remote.security');
+var remoteInformation =  localStorage.getItem('mCamera.remote.info');
 
 
 
