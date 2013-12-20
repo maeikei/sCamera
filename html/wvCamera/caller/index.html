@@ -35,7 +35,7 @@
 		console.log(call);
 		call.on('stream', function(stream){
 			console.log(stream);
-			$('#remote.video').prop('src', URL.createObjectURL(stream));
+			$('#remote_video').prop('src', URL.createObjectURL(stream));
 		});
 	});
   
@@ -47,7 +47,7 @@
 <body>
   <!-- Video area -->
   <div class="pure-u-2-3" id="video-container">
-    <video id="remote.video" autoplay></video>
+    <video id="remote_video" autoplay></video>
   </div>
 </body>
 </html>
