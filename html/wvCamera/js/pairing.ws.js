@@ -1,4 +1,4 @@
-var pairWSS = new WebSocket('wss://' + location.hostname + '/mCameraWss');
+var pairWSS = new WebSocket('wss://' + location.hostname + '/wvCameraWss');
 // When the connection is open, send some data to the server
 // Log errors
 pairWSS.onerror = function (error) {

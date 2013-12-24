@@ -7,7 +7,7 @@
     // you'll probably load configuration from config
     var cfg = {
         ssl: true,
-        port: 8453,
+        port: 20453,
         ssl_key: 'server.key',
         ssl_cert: 'server.crt'
     };

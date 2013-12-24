@@ -14,6 +14,7 @@
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     navigator.getUserMedia({audio: true, video: true}, function(stream){
         window.localStream = stream;
+		$('#local_video').prop('src', URL.createObjectURL(stream));
 	});
 	
     // PeerJS object
@@ -40,5 +41,9 @@
 </head>
 
 <body>
+  <!-- Video area -->
+  <div class="pure-u-2-3" id="video-container">
+    <video id="local_video" autoplay></video>
+  </div>
 </body>
 </html>
