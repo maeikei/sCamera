@@ -3,24 +3,34 @@
 <head>
 <title>Me2Me Camera Main Activity</title>
  <style type="text/css">
-	.divButton {
-	  padding: 10px;
-	  width: 85%;
-	  height: 100px;
-	  margin-left:5%;
+	#main_layout {
+	  text-align:center;
+	  width:96%;
+	  margin-left:auto;
+	  margin-right:auto;
+    }
+	div.divBtnSplit {
+	  height:20px;
 	}
-	.imgButton {
-	  float:left;
-	  height:100px;
-	  width:100px;
-	}
-	.hrefButton {
-	  float:left;
+	div.divButton {
+	  width: 95%;
+	  height: 120px;
 	  display: block;
-	  width: 85%;
-	  height: 80px;
+	  margin-left:auto;
+	  margin-right:auto;
+	}
+	img.imgButton {
+	  float:left;
+	  height:95%;
+	  width:10%;
+	}
+	a.hrefButton {
+	  float:right;
+/*	  display: block;*/
+	  width: 90%;
+	  height: 95%;
 	  background: #4E9CAF;
-	  padding: 10px;
+/*	  padding: 1%;*/
 	  text-align: center;
 	  border-radius: 5px;
 	  color: white;
@@ -31,27 +41,35 @@
 </head>
 <body>
 
-<p/>
+<div id="main_layout">
+<div class="divBtnSplit"></div>
 <div class="divButton">
 <img class="imgButton" src="./image/workAsCamera.jpg" />
 <a class="hrefButton" href="/wvCamera/callee">Work As Camera</a>
 </div>
+
+<div class="divBtnSplit"></div>
 
 <div class="divButton">
 <img class="imgButton" src="./image/workAsMonitor.jpg"/>
 <a class="hrefButton" href="/wvCamera/caller">Work As Monitor</a>
 </div>
 
+<div class="divBtnSplit"></div>
+
 <div class="divButton">
 <img class="imgButton" src="./image/pairMaster.jpg"/>
 <a class="hrefButton" href="/wvCamera/pair_master">Pair As Master</a>
 </div>
 
+<div class="divBtnSplit"></div>
+
 <div class="divButton">
 <img class="imgButton" src="./image/pairSlave.jpg"/>
 <a class="hrefButton" href="/wvCamera/pair_slave">Pair As Slave</a>
 </div>
-
+<div class="divBtnSplit"></div>
+</div>
 </body>
 <footer id="status">
 </footer>
