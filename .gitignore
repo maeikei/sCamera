@@ -1,3 +1,4 @@
 logs/*
 opt/nginx/logs/*
 peerjs-server
+app_android/bin/*
