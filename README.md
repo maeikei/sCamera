@@ -3,7 +3,7 @@ sCamera
 
 sCamera
 
-
+install env from picuntu.  
 sudo apt-get install build-essential git libpcre3 libpcre3-dev libssl-dev libxslt-dev libxml2-dev libgd2-xpm-dev php5-gd php5-geoip php5-dev libgeoip-dev  nodejs
 
 
