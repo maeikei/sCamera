@@ -6,11 +6,12 @@ NGINX := /opt/nginx/sbin/nginx
 all:start
 
 start:env
-	$(NGINX) -p $(WC) -c $(WC)/conf/nginx.conf
+	sudo $(NGINX) -p $(WC) -c $(WC)/conf/nginx.conf
+	make -C websocket/nodejs-version/ all
 restart:env
-	$(NGINX) -s reload -p $(WC) -c $(WC)/conf/nginx.conf
+	sudo $(NGINX) -s reload -p $(WC) -c $(WC)/conf/nginx.conf
 test:
-	$(NGINX) -t -p $(WC) -c $(WC)/conf/nginx.conf
+	sudo $(NGINX) -t -p $(WC) -c $(WC)/conf/nginx.conf
 env:
 	mkdir -p $(WC)/logs
 	
