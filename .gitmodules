@@ -1,0 +1,3 @@
+[submodule "submodules/peerjs-server"]
+    path = submodules/peerjs-server
+    url = git@github.com:maeikei/peerjs-server.git
