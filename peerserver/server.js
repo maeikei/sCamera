@@ -6,7 +6,7 @@ var server = PeerServer({
   path: '/peer',
   proxied: true,
   ssl: {
-    key: fs.readFileSync('/path/to/your/ssl/key/here.key'),
-    cert: fs.readFileSync('/path/to/your/ssl/certificate/here.crt')
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.crt')
   }
 });
