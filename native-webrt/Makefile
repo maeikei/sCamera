@@ -1,7 +1,7 @@
 
-
-all:webrtc webrtc-streamer
+PWD := $(shell pwd)
+all: webrtc webrtc-streamer
 webrtc:
 	
 webrtc-streamer:
-	make -C webrtc-streamer
+	make -C webrtc-streamer WEBRTCROOT=$(PWD)/webrtc WEBRTCBUILD=Debug
